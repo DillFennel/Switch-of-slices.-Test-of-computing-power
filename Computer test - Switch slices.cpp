@@ -182,6 +182,7 @@ int main()
             case 5:
             {
                 cout<<"Завершаем программу..."<<endl;
+                break;
             }
             default:
             {
