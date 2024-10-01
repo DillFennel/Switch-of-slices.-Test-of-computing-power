@@ -190,8 +190,4 @@ int main()
             }
         }
     }
-    cout<<get_test()<<'\n';
-    measure(&func1);
-    measure(&func2);
-    
 }
