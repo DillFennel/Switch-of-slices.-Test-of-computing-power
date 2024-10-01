@@ -106,10 +106,13 @@ string func2() //Алгоритм на основе двойной инверс�
 }
 
 void measure(string (*func)()){
-    unsigned int start_time =  clock(); 
-    cout<<"Первая функция получила ответ: "<<(*func)()<<'\n';
+    unsigned int start_time =  clock();
+    string answer = (*func)();
     unsigned int end_time = clock();
-    cout<<"Потратив времени: "<<end_time - start_time<<'\n';
+    if(get_len_test() <= 100){
+        cout<<"Получила ответ: "<<answer<<endl;
+    }
+    cout<<"Потратила времени: "<<end_time - start_time<<endl;
 }
 
 void hello(){
@@ -143,7 +146,12 @@ int main()
             case 1:
             {
                 generate_random_test();
-                cout<<"Получившийся тест: "<<get_test()<<endl;
+                if(get_len_test() <= 100){
+                    cout<<"Получившийся тест: "<<get_test()<<endl;
+                }
+                else{
+                    cout<<"Тест сгенерирован"<<endl;
+                }
                 break;
             }
             case 2:
@@ -156,14 +164,18 @@ int main()
             case 3:
             {
                 cout<<"Размер теста: "<<get_len_test()<<endl;
-                cout<<"Тест: "<<get_test()<<endl;
+                if(get_len_test() <= 100){
+                    cout<<"Тест: "<<get_test()<<endl;
+                }
                 pair<int,  pair<int, int>> parameters = get_parameters();
                 cout<<"Параметры: "<<parameters.first<<", "<<parameters.second.first<<", "<<parameters.second.second<<endl;
                 break;
             }
             case 4:
             {
+                cout<<"Первая функция"<<endl;
                 measure(&func1);
+                cout<<"Вторая функция"<<endl;
                 measure(&func2);
                 break;
             }
