@@ -163,7 +163,9 @@ int main()
                 cin>>test;
                 set_len_test(test.size());
                 set_test(test);
-                cout<<"Введенный тест: "<<get_test()<<endl;
+                if(get_len_test() <= 1000){
+                    cout<<"Введенный тест: "<<get_test()<<endl;
+                }
                 cout<<"Размер теста: "<<get_len_test()<<endl;
                 break;
             }
