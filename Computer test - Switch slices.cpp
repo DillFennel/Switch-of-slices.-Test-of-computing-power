@@ -117,14 +117,13 @@ void measure(string (*func)()){
 
 void hello(){
     cout<<"Функция:               Кнопка:"<<endl;
-    cout<<"Ввести размер теста     -   0"<<endl;
-    cout<<"Сгенерировать тест      -   1"<<endl;
-    cout<<"Сгенерировать срезы     -   2"<<endl;
-    cout<<"Ввести свой тест        -   3"<<endl;
-    cout<<"Ввести свои срезы       -   4"<<endl;
-    cout<<"Получить данные о тесте -   5"<<endl;
-    cout<<"Провести замеры         -   6"<<endl;
-    cout<<"Завершить программу     -   7"<<endl;
+    cout<<"Сгенерировать тест      -   0"<<endl;
+    cout<<"Сгенерировать срезы     -   1"<<endl;
+    cout<<"Ввести свой тест        -   2"<<endl;
+    cout<<"Ввести свои срезы       -   3"<<endl;
+    cout<<"Получить данные о тесте -   4"<<endl;
+    cout<<"Провести замеры         -   5"<<endl;
+    cout<<"Завершить программу     -   6"<<endl;
 }
 
 int main()
@@ -142,11 +141,7 @@ int main()
                 cout<<"Введите размер текста"<<endl;
                 cin>>n;
                 set_len_test(n);
-                cout<<"Введен размер теста: "<<get_len_test()<<endl;
-                break;
-            }
-            case 1:
-            {
+                cout<<"Введенный размер текста: "<<get_len_test()<<endl;
                 generate_random_test();
                 if(get_len_test() <= 100){
                     cout<<"Получившийся тест: "<<get_test()<<endl;
@@ -156,14 +151,14 @@ int main()
                 }
                 break;
             }
-            case 2:
+            case 1:
             {
                 generate_random_parameters();
                 pair<int,  pair<int, int>> parameters = get_parameters();
                 cout<<"Получившиеся срезв: "<<parameters.first<<", "<<parameters.second.first<<", "<<parameters.second.second<<endl;
                 break;
             }
-            case 3:
+            case 2:
             {
                 string test;
                 cout<<"Введите тест"<<endl;
@@ -174,7 +169,7 @@ int main()
                 cout<<"Размер теста: "<<get_len_test()<<endl;
                 break;
             }
-            case 4:
+            case 3:
             {
                 int m, n, p;
                 cout<<"Введите начало первого среза:"<<endl;
@@ -201,7 +196,7 @@ int main()
                 cout<<"Введеные параметры: "<<parameters.first<<", "<<parameters.second.first<<", "<<parameters.second.second<<endl;
                 break;
             }
-            case 5:
+            case 4:
             {
                 cout<<"Размер теста: "<<get_len_test()<<endl;
                 if(get_len_test() <= 100){
@@ -211,7 +206,7 @@ int main()
                 cout<<"Параметры: "<<parameters.first<<", "<<parameters.second.first<<", "<<parameters.second.second<<endl;
                 break;
             }
-            case 6:
+            case 5:
             {
                 cout<<"Первая функция"<<endl;
                 measure(&func1);
@@ -219,7 +214,7 @@ int main()
                 measure(&func2);
                 break;
             }
-            case 7:
+            case 6:
             {
                 cout<<"Завершаем программу..."<<endl;
                 break;
