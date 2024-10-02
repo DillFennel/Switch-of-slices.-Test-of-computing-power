@@ -175,13 +175,13 @@ int main()
                 cout<<"Введите начало первого среза:"<<endl;
                 cin>>m;
                 int lt = get_len_test();
-                if(m<0 or m>lt-2){
+                if(m<0 or m>lt-3){
                     cout<<"Такой срез не возможен, начните ввод заново"<<endl;
                     break;
                 }
                 cout<<"Введите конец первого среза:"<<endl;
                 cin>>n;
-                if(n<m or n>lt-2){
+                if(n<=m or n>lt-2){
                     cout<<"Такой срез не возможен, начните ввод заново"<<endl;
                     break;
                 }
