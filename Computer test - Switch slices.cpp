@@ -36,7 +36,6 @@ string get_test() { //Получает тестовую строку из фай
 void generate_random_test() { //Генерирует рандомную тестовую строку указанной в файле len_test длины и записывает в файл test
     int len_test = get_len_test();
     string test;
-    int w;
     for (int i = 0; i < len_test; i++) {
         test += char(33+rand()%94);
     }
