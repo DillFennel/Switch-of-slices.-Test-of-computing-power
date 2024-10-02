@@ -5,13 +5,13 @@
 #include <ctime> //Для замера времени
 using namespace std;
 
-void set_len_test(int len_test) { //Вводим размер теста
+void set_len_test(int len_test) { //Вводим размер тестовой строки
     ofstream fout("len_test.txt");
     fout << len_test;
     fout.close();
 }
 
-int get_len_test() {
+int get_len_test() { //Выдает длину тестовой строки
     ifstream fin("len_test.txt");
     int len_test;
     fin >> len_test;
@@ -19,13 +19,13 @@ int get_len_test() {
     return len_test;
 }
 
-void set_test(string test) {
+void set_test(string test) { //Заносит тестовую строку в файл
     ofstream fout("test.txt");
     fout << test;
     fout.close();
 }
 
-string get_test() {
+string get_test() { //Получает тестовую строку из файла
     ifstream fin("test.txt");
     string test;
     fin >> test;
@@ -33,7 +33,7 @@ string get_test() {
     return test;
 }
 
-void generate_random_test() { 
+void generate_random_test() { //Генерирует рандомную тестовую строку указанной в файле len_test длины и записывает в файл test
     int len_test = get_len_test();
     string test;
     int w;
@@ -43,13 +43,13 @@ void generate_random_test() {
     set_test(test);
 }
 
-void set_parameters(int m, int n, int p) { // 0 < m < n < p. Мы меняем местами срезы [m:n] и [n+1:p]
+void set_parameters(int m, int n, int p) { //Устанавливает границы срезов в строке. 0 <= m < n < p. Мы меняем местами срезы [m:n] и [n+1:p]
     ofstream fout("parameters.txt");
     fout << m<<' '<< n << ' ' << p<<'\n';
     fout.close();
 }
 
-pair<int,  pair<int, int>> get_parameters() {
+pair<int,  pair<int, int>> get_parameters() { //Выдает границы срезов в строке
     ifstream fin("parameters.txt");
     pair<int,  pair<int, int>> ret;
     string parameters;
@@ -60,7 +60,7 @@ pair<int,  pair<int, int>> get_parameters() {
     return ret;
 }
 
-void generate_random_parameters() {
+void generate_random_parameters() { //Генерирует рандомные срезы подходящие для длины теста и устанавливает их
     int len_test = get_len_test();
     string test;
     int m = rand()%(len_test-2);
@@ -105,17 +105,17 @@ string func2() //Алгоритм на основе двойной инверс�
     return ret2;
 }
 
-void measure(string (*func)()){
+void measure(string (*func)()){ //Замеряет, сколько времени потратил алгоритм на свое выполнение
     unsigned int start_time =  clock();
     string answer = (*func)();
     unsigned int end_time = clock();
-    if(get_len_test() <= 100){
+    if(get_len_test() <= 1000){ //Выводим ответ только если тест маленький
         cout<<"Получила ответ: "<<answer<<endl;
     }
     cout<<"Потратила времени: "<<end_time - start_time<<endl;
 }
 
-void hello(){
+void hello(){ //Выводит пояснение к программе для пользователя
     cout<<"Функция:               Кнопка:"<<endl;
     cout<<"Сгенерировать тест      -   0"<<endl;
     cout<<"Сгенерировать срезы     -   1"<<endl;
@@ -130,12 +130,12 @@ int main()
 {
     hello();
     int swt;
-    while(swt != 7){
+    while(swt != 6){
         cout<<"Нажмите кнопку"<<endl;
         cin>>swt;
         switch(swt)
         {
-            case 0:
+            case 0: //Сгенерировать тест
             {
                 int n;
                 cout<<"Введите размер текста"<<endl;
@@ -143,7 +143,7 @@ int main()
                 set_len_test(n);
                 cout<<"Введенный размер текста: "<<get_len_test()<<endl;
                 generate_random_test();
-                if(get_len_test() <= 100){
+                if(get_len_test() <= 1000){ //Выводим тест только если он маленький
                     cout<<"Получившийся тест: "<<get_test()<<endl;
                 }
                 else{
@@ -151,14 +151,14 @@ int main()
                 }
                 break;
             }
-            case 1:
+            case 1: //Сгенерировать срезы
             {
                 generate_random_parameters();
                 pair<int,  pair<int, int>> parameters = get_parameters();
                 cout<<"Получившиеся срезв: "<<parameters.first<<", "<<parameters.second.first<<", "<<parameters.second.second<<endl;
                 break;
             }
-            case 2:
+            case 2: //Ввести свой тест
             {
                 string test;
                 cout<<"Введите тест"<<endl;
@@ -169,7 +169,7 @@ int main()
                 cout<<"Размер теста: "<<get_len_test()<<endl;
                 break;
             }
-            case 3:
+            case 3: //Ввести свои срезы
             {
                 int m, n, p;
                 cout<<"Введите начало первого среза:"<<endl;
@@ -196,17 +196,17 @@ int main()
                 cout<<"Введеные параметры: "<<parameters.first<<", "<<parameters.second.first<<", "<<parameters.second.second<<endl;
                 break;
             }
-            case 4:
+            case 4: //Получить данные о тесте
             {
                 cout<<"Размер теста: "<<get_len_test()<<endl;
-                if(get_len_test() <= 100){
+                if(get_len_test() <= 1000){ //Выводим тест только если он маленький
                     cout<<"Тест: "<<get_test()<<endl;
                 }
                 pair<int,  pair<int, int>> parameters = get_parameters();
                 cout<<"Параметры: "<<parameters.first<<", "<<parameters.second.first<<", "<<parameters.second.second<<endl;
                 break;
             }
-            case 5:
+            case 5: //Провести замеры
             {
                 cout<<"Первая функция"<<endl;
                 measure(&func1);
@@ -214,7 +214,7 @@ int main()
                 measure(&func2);
                 break;
             }
-            case 6:
+            case 6: //Завершить программу
             {
                 cout<<"Завершаем программу..."<<endl;
                 break;
