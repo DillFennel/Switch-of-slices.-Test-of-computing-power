@@ -61,7 +61,6 @@ pair<int,  pair<int, int>> get_parameters() { //Выдает границы ср
 
 void generate_random_parameters() { //Генерирует рандомные срезы подходящие для длины теста и устанавливает их
     int len_test = get_len_test();
-    string test;
     int m = rand()%(len_test-2);
     int n = m+1 + rand()%(len_test-2-m);
     int p = n+1 + rand()%(len_test-1-n);
